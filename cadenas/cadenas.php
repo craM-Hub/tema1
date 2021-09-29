@@ -3,6 +3,7 @@
 $nombre = ($_GET['nombre']) ?? "Marc";
 $prefijo = ($_GET['prefijo']) ?? "";
 $contienePrefijo = "";
+$url = 'http://username:password@hostname:9090/path?arg=value';
 
 if ($prefijo != "") {
     if (strpos($nombre, $prefijo) === false) {
@@ -60,8 +61,19 @@ if ($prefijo != "") {
     </p>
     <h3>Sustitución letra o por 0</h3>
     <p>
+        <?php echo "Nombre original: $nombre"; ?>
+    </p>
+    <p>
+        <?php echo "Nombre cambiado: ", str_ireplace('o', '0', $nombre); ?>
+    </p>
+    <br>
+    <h3>Parse URL</h3>
+    <p>
         <?php
-        echo "$nombre" . str_ireplace()
+        echo parse_url($url, PHP_URL_SCHEME) . "<br>";
+        echo parse_url($url, PHP_URL_USER) . "<br>";
+        echo parse_url($url, PHP_URL_PATH) . "<br>";
+        echo parse_url($url, PHP_URL_QUERY) . "<br>";
         ?>
     </p>
 </body>
