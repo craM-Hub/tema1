@@ -1,6 +1,16 @@
 <?php
 
 $nombre = ($_GET['nombre']) ?? "Marc";
+$prefijo = ($_GET['prefijo']) ?? "";
+$contienePrefijo = "";
+
+if ($prefijo != "") {
+    if (strpos($nombre, $prefijo) === false) {
+        $contienePrefijo = "$nombre no contiene el prefijo";
+    } else {
+        $contienePrefijo = "$nombre comienza por el prefijo seleccionado";
+    };
+}
 ?>
 
 <!doctype html>
@@ -14,13 +24,46 @@ $nombre = ($_GET['nombre']) ?? "Marc";
 </head>
 
 <body>
+    <h3>Un parámetro:</h3>
     <ul><?= $title ?>
-        <li>Nombre: <a href='cadenas.php?nombre=Kate'>Kate</a></li>
-        <li>Nombre: <a href='cadenas.php?nombre=Alejandro'>Alejandro</a></li>
+        <li>Nombre: <a href='cadenas.php?nombre=Kate&prefijo=Ka'>Kate</a></li>
+        <li>Nombre: <a href='cadenas.php?nombre=Alejandro&prefijo=Ka'>Alejandro</a></li>
     </ul>
     <p>El nombre elegido es: <?= $nombre ?></p>
     <p>Su longitud es de: <?= strlen($nombre) ?></p>
+    <p>En mayúsculas: <?= strtoupper($nombre) ?></p>
+    <p>En minúsculas: <?= strtolower($nombre) ?></p>
+    <br>
+    <h3>Cambiar prefijo</h3>
+    <ul>
+        <li>Prefijo Ka: <a href='cadenas.php?nombre=<?= $nombre ?>&prefijo=Ka'>Ka</a></li>
+        <li>Prefijo La: <a href='cadenas.php?nombre=<?= $nombre ?>&prefijo=Al'>Al</a></li>
 
+    </ul>
+    <br>
+    <h3>Prefijo: <?= $prefijo ?></h3>
+    <p><?= $contienePrefijo ?></p>
+    <br>
+    <h3>Contador letra a/A:</h3>
+    <p><?php echo "$nombre contiene ", substr_count(strtolower($nombre), 'a') . " letra/s a" ?></p>
+    <br>
+    <h3>Posición de la primera a/A:</h3>
+    <p><?php
+        $pos = stripos(strtolower($nombre), 'a');
+        if ($pos === false) {
+            echo "No existe la letra seleccionada";
+        } else {
+            echo "Posición: ", $pos;
+        }
+
+        ?></p>
+    </p>
+    <h3>Sustitución letra o por 0</h3>
+    <p>
+        <?php
+        echo "$nombre" . str_ireplace()
+        ?>
+    </p>
 </body>
 
 </html>
