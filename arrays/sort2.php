@@ -10,10 +10,33 @@ foreach ($temperaturas as $temp) {
     $suma += $temp;
 }
 
-$media = $suma / count($temperaturas);
-echo "La temperatura media del mes es: ", round($media, 2);
-echo "<br><br>";
+echo "Temperaturas del mes: " . $temperaturasCadena;
 
-foreach ($temperaturas as $temp) {
-    # code...
+$media = $suma / count($temperaturas);
+echo "<br>Temperatura media del mes: ", round($media, 2);
+
+sort($temperaturas);
+$minimas = array_slice($temperaturas, 0, 5, true);
+$maximas = array_slice($temperaturas, -5, 5, true);
+
+echo "<br>Temperaturas máximas: ";
+$contador = 1;
+foreach ($maximas as $key => $max) {
+    if ($contador === count($maximas)) {
+        echo $max;
+    } else {
+        echo $max . ", ";
+    }
+    $contador++;
+}
+
+echo "<br>Temperaturas mínimas: ";
+$contador = 1;
+foreach ($minimas as $key => $min) {
+    if ($contador === count($minimas)) {
+        echo $min;
+    } else {
+        echo $min . ", ";
+    }
+    $contador++;
 }
