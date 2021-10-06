@@ -11,7 +11,7 @@ function comparacion($a, $b)
 $trabajos = array("Juan" => "Administrador de sistemas", "María" => "Programadora junior", "Andrés" => "Secretaría", "Berta" => "Seguridad informática");
 
 
-echo "Ordenado por longitud de la descriptción: ";
+echo "Ordenado por longitud de la descripción: ";
 echo "<br><br>";
 uasort($trabajos, 'comparacion');
 

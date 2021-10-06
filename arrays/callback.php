@@ -1,12 +1,11 @@
 <?php
-
-$max = 0;
-$min = 0;
-
-function minMax($cadena)
+function tamanyo($cadena)
 {
-    echo strlen($cadena);
+    return strlen($cadena);
 };
 
 $cadenas = array("Esta es la cadena más larga del array", "Esta es la más corta", "Esta está para rellenar hueco");
-print_r(array_map("minMax", $cadenas));
+$longitud = array_map("tamanyo", $cadenas);
+echo "Longitud máximo: " . max($longitud);
+echo "<br>";
+echo "Longitud mínimo: " . min($longitud);
