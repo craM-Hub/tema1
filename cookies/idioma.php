@@ -1,33 +1,24 @@
 <?php
 
-    $language = "";
+$language = "";
 
-    //Crea aquí tu script para seleccionar el idioma
-    $language = ($_GET['setLanguage']) ?? "nulo";
-    setcookie( 'language', $language, time() + 60*60*24*30,'/' );
+//Crea aquí tu script para seleccionar el idioma
+$language = $_GET["setLanguage"] ?? $_COOKIE["language"] ?? "es";
+setcookie("language", $language);
 
-    if ($_COOKIE["language"] == 'en') {
-        $language = 'en';
-    }else if ($_COOKIE["language"] == 'es') {
-        $language = 'es';
-    }
-    
+//Fin script
 
-    //Fin script
+if ($language == "en") {
 
-    if ($language == "en"){
+    $content = "This page is in English";
 
-        $content = "This page is in English";
+    $title = "Change the language of the page";
+} else {
 
-        $title = "Change the language of the page";
+    $content = "Esta página está en Castellano (Idioma por defecto)";
 
-    }else{
-
-        $content = "Esta página está en Castellano (Idioma por defecto)";
-
-        $title = "Cambiar el idioma de la página";
-
-    }
+    $title = "Cambiar el idioma de la página";
+}
 
 ?>
 
@@ -39,7 +30,8 @@
     <meta charset="utf-8">
     <title><?= $title ?></title>
     <meta name="author" content="Víctor Ponz">
-</head>    
+</head>
+
 <body>
     <ul><?= $title ?>
         <li><a href='idioma.php?setLanguage=es'>Español</a></li>
@@ -47,4 +39,5 @@
     </ul>
     <?= $content ?>
 </body>
+
 </html>
