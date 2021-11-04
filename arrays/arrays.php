@@ -2,7 +2,7 @@
 
 $nombres = array('Pedro', 'Marc', 'Maria', 'Marta', 'Fran', 'David', 'Nerea');
 
-echo "El array de nombres contiene " . count($nombre) . " nombres";
+echo "El array de nombres contiene " . count($nombres) . " nombres";
 echo "<br>";
 echo "Normal: " . implode(" ", $nombres);
 echo "<br>";
